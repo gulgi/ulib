@@ -3,7 +3,6 @@
 In this wiki, we introduce the conventions for programming with ULIB.
 
 ===Function Return Value Specification===
-Unless it is explicitly stated, the following conventions hold for the function return value.
-(NOTE: the return value in question means the status code for the function call, so don't mess with the output of the function.)
+Unless it is explicitly stated, the following conventions hold for a function return value. (NOTE: the return value in question means the status code for the function call, so don't mess with the function output.)
   * For int type return value, a function returns -1 for an error, 0 otherwise.
   * For pointer type return value, a function returns NULL/0 for an error, non-zero otherwise.
