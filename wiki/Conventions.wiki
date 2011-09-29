@@ -1,0 +1,4 @@
+#labels Phase-Requirements
+=Conventions=
+  * Error number
+  For function with int return status value(i.e. indicator of success), returns nonzero for an error, 0 otherwise.
