@@ -57,3 +57,5 @@ Apart from key generation, random or sequential, the tests involve two steps. In
 
 == Conclusions ==
 Generally, sequential keys yield faster insert() and find(). This is mainly due to that better locality is achieved, that is, with high probability sequential keys might be located in CPU cache. Also we can see from the tables, compiler optimizations seem to have a great impact on the performance. For this reason, durations for google sparse hash map and dense hash map have decreased dramatically. Overall, we see that ulib align_hash_map has the best scores for both insert() and find().
+
+For people who are interested in the test program, please email me :-).
