@@ -7,10 +7,10 @@ We will do some performance comparison. These including aligned hashing and seve
 = Experiment Results =
 
 The tests are performed on a Linux 64-bit machine, with Intel Xeon E5620  @2.40GHz
-Processor and 64G memory. The test program was compiled using GCC 3.4.5.
+Processor and 64G memory. The test program was compiled using GCC 3.4.5. In the test program, the following four tested hash maps are first created, and then 10,000,000 random keys are inserted. After that, 10,000,000 look ups are performed on each map. The mean duration for both insert() and find() are given as follows.
 
+== Compiled with Optimization Level 0 ==
 || *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || -10 || 25 ||
 || *STL hash_map* || -10 || 25 ||
 || *Google sparse_hash_map* || -15 || 30 ||
 || *Google dense_hash_map* || -10 || 32 ||
