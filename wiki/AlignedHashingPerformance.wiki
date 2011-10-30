@@ -33,5 +33,27 @@ Apart from key generation, random or sequential, the tests involve two steps. In
 || *Google dense_hash_map* || 0.108172 || 0.054589 ||
 || *ulib align_hash_map* || *0.102181* || *0.029986* ||
 
+== With Sequential Key Generation ==
+  * Compiled with Optimization Level 0
+|| *Name* || *Insert (sec)* || *Find (sec)* || 
+|| *STL hash_map* || 0.460922 || 0.097423 ||
+|| *Google sparse_hash_map* || 1.811730 || 0.586408 ||
+|| *Google dense_hash_map* || 0.436950 || 0.119723 ||
+|| *ulib align_hash_map* || *0.084637* || *0.033385* ||
+
+  * Compiled with Optimization Level 2
+|| *Name* || *Insert (sec)* || *Find (sec)* || 
+|| *STL hash_map* || 0.094447 || 0.017092 ||
+|| *Google sparse_hash_map* || 0.301150 || 0.062825 ||
+|| *Google dense_hash_map* || 0.058016 || 0.012435 ||
+|| *ulib align_hash_map* || *0.026941* || *0.006157* ||
+
+  * Compiled with Optimization Level 3
+|| *Name* || *Insert (sec)* || *Find (sec)* || 
+|| *STL hash_map* || 0.094627 || 0.016336 ||
+|| *Google sparse_hash_map* || 0.300022 || 0.063178 ||
+|| *Google dense_hash_map* || 0.060236 || 0.012337 ||
+|| *ulib align_hash_map* || *0.027598* || *0.006193* ||
+
 == Conclusions ==
-As we can see from the charts, compiler optimizations seem to have a great impact on the performance. Most significantly, the durations for google sparse hash map and dense hash map have decreased dramatically. According to the data, we see that ulib align hash map has the best scores for both insert() and find().
+Generally, sequential keys yield faster insert() and find(). This is mainly due to that better locality is achieved, that is, with high probability sequential keys might be located in CPU cache. Also we can see from the tables, compiler optimizations seem to have a great impact on the performance. For this reason, durations for google sparse hash map and dense hash map have decreased dramatically. Overall, we see that ulib align_hash_map has the best scores for both insert() and find().
