@@ -29,3 +29,6 @@ Processor and 64G memory. The test program was compiled using GCC 3.4.5. In the 
 || *Google sparse_hash_map* || 0.525760 || 0.131750 ||
 || *Google dense_hash_map* || 0.108172 || 0.054589 ||
 || *ulib align_hash_map* || *0.102181* || *0.029986* ||
+
+== Conclusions ==
+As we can see from the charts, compiler optimizations seem to have a great impact on the performance. Most significantly, the durations for google sparse hash map and dense hash map have decreased dramatically. According to the data, we see that ulib align hash map has the best scores for both insert() and find().
