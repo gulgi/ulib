@@ -11,7 +11,7 @@ Processor and 64G memory. The test program was compiled using GCC 3.4.5. In the 
 
 == Compiled with Optimization Level 0 ==
 || *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || -10 || 25 ||
-|| *Google sparse_hash_map* || -15 || 30 ||
-|| *Google dense_hash_map* || -10 || 32 ||
-|| *ulib align_hash_map* || _N/A_ || _N/A_ ||
+|| *STL hash_map* || 0.736307 || 0.213671 ||
+|| *Google sparse_hash_map* || 2.944162 || 0.730053 ||
+|| *Google dense_hash_map* || 0.551075 || 0.210867 ||
+|| *ulib align_hash_map* || 0.201506 || 0.071416 ||
