@@ -2,8 +2,7 @@
 
 = Introduction =
 
-We will do some performance comparison. These including aligned hashing and several other popular implementations.  Of major concern is the duration for each find() and insert() operations.
-In particular, we divide the experiments into two groups. In the first group, keys for insert() and find() are randomly generated. The second group, on the other hand, uses 0...NKEY sequential integers as keys. To focus on the performance of hash map, integer type is used for both key and value in the two groups. Also the hash function f: x->x is used by default.
+In this page, we present some performance comparison between aligned hashing and several other popular implementations. In particular, we divide the experiments into two groups. In the first group, keys for insert() and find() are randomly generated. The second group, on the other hand, uses 0...NKEY sequential integers as keys. To focus on the performance of hash map, integer type is used for both key and value in the two groups. Also the hash function f: x->x is used by default.
 
 = Experiment =
 
