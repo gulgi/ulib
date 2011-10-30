@@ -5,10 +5,11 @@
 We will do some performance comparison. These including aligned hashing and several other popular implementations.  Of major concern is the duration for each find() and insert() operations.
 In particular, we divide the experiments into two groups. In the first group, keys for insert() and find() are randomly generated. The second group, on the other hand, uses 0...NKEY sequential integers as keys. To focus on the performance of hash map, integer type is used for both key and value in the two groups. Also the hash function f: x->x is used by default.
 
-= Experiment Results =
+= Experiment =
 
-We ran the test program on a Linux 64-bit machine, with Intel Xeon E5620  @2.40GHz CPU and 64G memory. The test program was compiled using GCC 3.4.5 with different optimization levels. In the test program, initially four hash maps are created created, that is, STL hash_map, Google's sparse and dense hash_map, and ulib align_hash_map. The performance for random keys and sequential keys are tested separately. 
+We ran the test program on a Linux 64-bit machine, with Intel Xeon E5620  @2.40GHz CPU and 64G memory. The test program was compiled using GCC 3.4.5 with different optimization levels. In the test program, initially four hash maps are created created, that is, STL hash_map, Google's sparse and dense hash_map, and ulib align_hash_map. The performance for random keys and sequential keys are tested separately.  </br>
 Apart from key generation, random or sequential, the tests involve two steps. In the first step, 10,000,000 keys were inserted into the four maps, since we know that all these hashing don't take into account the values, and values can be seen as they are actually 'attached' to their corresponding keys. For this reason, we are simply required to assign the values in a uniformed fashion.
+
 
 == Compiled with Optimization Level 0 ==
 || *Name* || *Insert (sec)* || *Find (sec)* || 
