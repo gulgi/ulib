@@ -1,0 +1,17 @@
+#Comparisons Among Several Hashing Implementations
+
+= Introduction =
+
+We will do some performance comparison. These including aligned hashing and several other popular implementations.  Of major concern is the duration for each find() and insert() operations.
+
+= Experiment Results =
+
+The tests are performed on a Linux 64-bit machine, with Intel Xeon E5620  @2.40GHz
+Processor and 64G memory. The test program was compiled using GCC 3.4.5.
+
+|| *Name* || *Insert (sec)* || *Find (sec)* || 
+|| *STL hash_map* || -10 || 25 ||
+|| *STL hash_map* || -10 || 25 ||
+|| *Google sparse_hash_map* || -15 || 30 ||
+|| *Google dense_hash_map* || -10 || 32 ||
+|| *ulib align_hash_map* || _N/A_ || _N/A_ ||
