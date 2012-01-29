@@ -1,16 +1,8 @@
-#Comparisons Among Several Hashing Implementations
+Here we roughly compare the performance of several popular hashing implementations. The experiments are divided into two groups, the first group uses random keys as testing data, and performance of sequencial keys are investigated in the second group. In order to concentrate on the hashmap performance, excluding hash function, integer type keys are used in all experiments.
 
-= Introduction =
+All experiments are tested on Linux 64-bit environment, with Intel Xeon E5620  @2.40GHz CPU and 64G memory. The test program was compiled using GCC 3.4.5 with different optimization levels. Initially, four hashmaps are created, namely STL hash_map, Google's sparse/dense hash_maps, and ULIB align_hash_map. In spite of key generation, random or sequential, the experiments include two steps. Firstly, 10,000,000 keys are inserted into the four maps respectively, and then a number of searches are performed on each hashmap separately. The testing results are given in separate tables below.
 
-In this page, we present some performance comparison between aligned hashing and several other popular implementations. In particular, we divide the experiments into two groups. In the first group, keys for insert() and find() are randomly generated. The second group, on the other hand, uses 0...NKEY sequential integers as keys. To focus on the performance of hash map, integer type is used for both key and value in the two groups. Also the hash function f: x->x is used by default.
-
-= Experiment =
-
-We ran the test program on a Linux 64-bit machine, with Intel Xeon E5620  @2.40GHz CPU and 64G memory. The test program was compiled using GCC 3.4.5 with different optimization levels. In the test program, initially four hash maps are created, namely STL hash_map, Google's sparse and dense hash_map, and ulib align_hash_map. The performance for random keys and sequential keys are tested separately. 
-
-Apart from key generation, random or sequential, the tests consist of two steps. In the first step, 10,000,000 keys were inserted into the four maps, since we know that all these hashing don't take into account the values, and values can be seen as they are actually 'attached' to their corresponding keys. We are simply required to assign the values in a uniformed fashion. The following tables give comparison results in our test.
-
-== With Random Key Generation ==
+== Random Keys ==
   * Compiled with Optimization Level 0
 || *Name* || *Insert (sec)* || *Find (sec)* || 
 || *STL hash_map* || 0.736307 || 0.213671 ||
@@ -32,7 +24,7 @@ Apart from key generation, random or sequential, the tests consist of two steps.
 || *Google dense_hash_map* || 0.108172 || 0.054589 ||
 || *ulib align_hash_map* || *0.102181* || *0.029986* ||
 
-== With Sequential Key Generation ==
+== Sequential Keys ==
   * Compiled with Optimization Level 0
 || *Name* || *Insert (sec)* || *Find (sec)* || 
 || *STL hash_map* || 0.460922 || 0.097423 ||
@@ -55,6 +47,4 @@ Apart from key generation, random or sequential, the tests consist of two steps.
 || *ulib align_hash_map* || *0.027598* || *0.006193* ||
 
 == Conclusions ==
-Generally, sequential keys yield faster insert() and find(). This is mainly due to that better locality is achieved, that is, with high probability sequential keys might be located in CPU cache. Also we can see from the tables, compiler optimizations seem to have a great impact on the performance. For this reason, durations for google sparse hash map and dense hash map have decreased dramatically. Overall, we see that ulib align_hash_map has the best scores for both insert() and find().
-
-For people who are interested in the test program, please email me :-).
+Generally, both insert() and find() show better performance for sequential keys. This is mainly derived from better locality. Besides, we see that compiler optimization has great influence on the results. Overall, among all tests, align_hash_map has the minimum CPU time.
