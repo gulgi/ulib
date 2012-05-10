@@ -2,7 +2,7 @@ We compare the performance of some popular hashings. Our primary interest focuse
 
 The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations.
 
-== Random Keys ==
+=== Random Keys ===
 
 || *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
 || *STL Hash Map* || 50000 || 330 || 66 || *825664* ||
@@ -16,7 +16,7 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 || *Google Dense Hash Map* || 100000 || 131 || 69 || 4782080 ||
 || *ULIB Align Hash Map* || 100000 || *98* || *32* || 4195328 ||
 
-== Sequential Keys ==
+=== Sequential Keys ===
 
 || *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
 || *STL Hash Map* || 50000 || 125 || *16* || *825728* ||
@@ -30,5 +30,5 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 || *Google Dense Hash Map* || 100000 || 46 || 340 || 4782080 ||
 || *ULIB Align Hash Map* || 100000 || *40* || 53 || 4195328 ||
 
-== Conclusions ==
+== Conclusion ==
 Overall, insertion in align_hash_map is the fastest among all tests. It can be seen that search operation in align_hash_map is also efficient. STL hash_map has least memory usage and best search performance for sequential keys.
