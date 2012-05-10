@@ -19,10 +19,10 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 == Sequential Keys ==
 
 || *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
-|| *STL Hash Map* || 50000 || 116 || 24 || *825728* ||
+|| *STL Hash Map* || 50000 || 116 || *24* || *825728* ||
 || *Google Sparse Hash Map* || 50000 || 3592 || 127 || 4246229 ||
 || *Google Dense Hash Map* || 50000 || 44 || 203 || 2395648 ||
-|| *ULIB Align Hash Map* || 50000 || *38* || *53* || 2098176 ||
+|| *ULIB Align Hash Map* || 50000 || *38* || 53 || 2098176 ||
 
 || *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
 || *STL Hash Map* || 100000 || 116 || 92 || *1650240* ||
