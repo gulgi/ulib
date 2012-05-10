@@ -1,50 +1,11 @@
-Here we roughly compare the performance of several popular hashing implementations. The experiments are divided into two groups, the first group uses random keys as testing data, and performance of sequencial keys are investigated in the second group. In order to concentrate on the hashmap performance, excluding hash function, integer type keys are used in all experiments.
+We compare the performance of some popular hashings. Our primary interest focuses on insertion and search. In order to obtain accurate results, both key and value types are size_t, hence ignoring memory copy of large keys/values. 
 
-All experiments are tested on Linux 64-bit environment, with Intel Xeon E5620  @2.40GHz CPU and 64G memory. The test program was compiled using GCC 3.4.5 with different optimization levels. Initially, four hashmaps are created, namely STL hash_map, Google's sparse/dense hash_maps, and ULIB align_hash_map. In spite of key generation, random or sequential, the experiments include two steps. Firstly, 10,000,000 keys are inserted into the four maps respectively, and then a number of searches are performed on each hashmap separately. The testing results are given in separate tables below.
+The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations.
 
 == Random Keys ==
-  * Compiled with Optimization Level 0
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.736307 || 0.213671 ||
-|| *Google sparse_hash_map* || 2.944162 || 0.730053 ||
-|| *Google dense_hash_map* || 0.551075 || 0.210867 ||
-|| *ulib align_hash_map* || *0.201506* || *0.071416* ||
 
-  * Compiled with Optimization Level 2
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.330408 || 0.085784 ||
-|| *Google sparse_hash_map* || 0.505508 || 0.131285 ||
-|| *Google dense_hash_map* || 0.107886 || 0.055064 ||
-|| *ulib align_hash_map* || *0.101188* || *0.028575* ||
-
-  * Compiled with Optimization Level 3
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.345125 || 0.084649 ||
-|| *Google sparse_hash_map* || 0.525760 || 0.131750 ||
-|| *Google dense_hash_map* || 0.108172 || 0.054589 ||
-|| *ulib align_hash_map* || *0.102181* || *0.029986* ||
-
-== Sequential Keys ==
-  * Compiled with Optimization Level 0
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.460922 || 0.097423 ||
-|| *Google sparse_hash_map* || 1.811730 || 0.586408 ||
-|| *Google dense_hash_map* || 0.436950 || 0.119723 ||
-|| *ulib align_hash_map* || *0.084637* || *0.033385* ||
-
-  * Compiled with Optimization Level 2
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.094447 || 0.017092 ||
-|| *Google sparse_hash_map* || 0.301150 || 0.062825 ||
-|| *Google dense_hash_map* || 0.058016 || 0.012435 ||
-|| *ulib align_hash_map* || *0.026941* || *0.006157* ||
-
-  * Compiled with Optimization Level 3
-|| *Name* || *Insert (sec)* || *Find (sec)* || 
-|| *STL hash_map* || 0.094627 || 0.016336 ||
-|| *Google sparse_hash_map* || 0.300022 || 0.063178 ||
-|| *Google dense_hash_map* || 0.060236 || 0.012337 ||
-|| *ulib align_hash_map* || *0.027598* || *0.006193* ||
+|| *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
+|| *STL Hash Map* || 5000 || 330 || 66 || 825664 ||
 
 == Conclusions ==
 Generally, both insert() and find() show better performance for sequential keys. This is mainly derived from better locality. Besides, we see that compiler optimization has great influence on the results. Overall, among all tests, align_hash_map has the minimum CPU time.
