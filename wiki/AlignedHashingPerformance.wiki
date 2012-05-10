@@ -9,6 +9,10 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 || *Google Sparse Hash Map* || 5000 || 374 || 127 || 4246053 ||
 || *Google Dense Hash Map* || 5000 || 102 || 43 || 2395648 ||
 || *ULIB Align Hash Map* || 5000 || *96* || *25* || 2098176 ||
+|| *STL Hash Map* || 10000 || 384 || 92 || *1650240* ||
+|| *Google Sparse Hash Map* || 10000 || 409 || 147 || 4246053 ||
+|| *Google Dense Hash Map* || 10000 || 131 || 69 || 4782080 ||
+|| *ULIB Align Hash Map* || 10000 || *98* || *32* || 4195328 ||
 
 == Conclusions ==
 Generally, both insert() and find() show better performance for sequential keys. This is mainly derived from better locality. Besides, we see that compiler optimization has great influence on the results. Overall, among all tests, align_hash_map has the minimum CPU time.
