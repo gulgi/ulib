@@ -31,4 +31,4 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 || *ULIB Align Hash Map* || 100000 || *40* || 53 || 4195328 ||
 
 == Conclusions ==
-Generally, both insert() and find() show better performance for sequential keys. This is mainly derived from better locality. Besides, we see that compiler optimization has great influence on the results. Overall, among all tests, align_hash_map has the minimum CPU time.
+Overall, insertion in align_hash_map is the fastest among all tests. It can be seen that search operation in align_hash_map is also efficient. STL hash_map has least memory usage and best search performance for sequential keys.
