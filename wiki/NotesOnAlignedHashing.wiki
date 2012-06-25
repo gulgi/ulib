@@ -1,0 +1,25 @@
+Generally aligned hashing is similar to STL hash table, but a few
+points need to note.
+
+First, the key, or the first class for align_hash_map/set should
+support == and < operators, though primitive types such as 'int'
+constitutionally implement these two operations, so do some STL
+containers like std::string. Note that align_hash_map/set currently
+don't support specifying == and < functions as template arguments.
+In addition, the key class should also implements a size_t operator,
+which converts the class instance to its integer representation. This
+conversion needs not to be invertible and is usually done by using
+a hash function.
+
+Second, key and value of align_hash_map/set iterator are referred
+through key() and value() member functions instead of using 'first'
+and 'second' structure members due to performance considerations.
+
+Lastly, advanced user can specify special flags to enable/disable
+features. For example, align_hash_map/set will use 64-bit addressing
+instead of 32-bit if the flag AH_64BIT is set. This has some
+performance advantages on 64-bit OS. Performance can be further
+improved by setting the AH_TIER_PROBING flag when the size of
+align_hash_map/set object is known to be small beforehand.
+
+Sample usage can be found at test_alignhash.cpp under test/.
