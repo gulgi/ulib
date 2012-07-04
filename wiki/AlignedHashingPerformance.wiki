@@ -1,6 +1,6 @@
 We compare the performance of some popular hashings. Our primary interest focuses on insertion and search. In order to obtain accurate results, size_t type is used for both key and value, thus ignoring memory copy of large keys/values. 
 
-The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations, memory consumption are measured using gperftools.
+The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations, memory consumption are measured using gperftools. For further details, view the source at ./perf/hash_perf.cpp.
 
 === Random Keys ===
 
