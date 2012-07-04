@@ -6,7 +6,8 @@
   # Untar/svn checkout the source.
   # cd ulib_src_dir/
   # make
-  After
+ 
+At this time, you will have all necessary headers in ulib_src_dir/include/ and libraries in ulib_src_dir/lib/
      
 
 
