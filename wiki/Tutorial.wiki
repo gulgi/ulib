@@ -2,11 +2,11 @@
 
 = Compiling Ulib =
 
-  * Compiling Ulib on Linux OSes:
-     # Untar/svn checkout the source.
-     # cd ulib_src_dir/
-     # make
-    After
+==Compiling Ulib on Linux OSes==
+  # Untar/svn checkout the source.
+  # cd ulib_src_dir/
+  # make
+  After
      
 
 
