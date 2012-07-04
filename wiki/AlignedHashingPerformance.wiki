@@ -1,6 +1,6 @@
-We compare the performance of some popular hashings. Our primary interest focuses on insertion and search. In order to obtain accurate results, both key and value types are size_t, hence ignoring memory copy of large keys/values. 
+We compare the performance of some popular hashings. Our primary interest focuses on insertion and search. In order to obtain accurate results, size_t type is used for both key and value, thus ignoring memory copy of large keys/values. 
 
-The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations.
+The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations, memory consumption are measured using gperftools.
 
 === Random Keys ===
 
@@ -31,4 +31,4 @@ The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memor
 || *ULIB Align Hash Map* || 100000 || *40* || 53 || 4195328 ||
 
 == Conclusion ==
-Overall, insertion in align_hash_map is the fastest among all tests. It can be seen that search operation in align_hash_map is also efficient. STL hash_map has least memory usage and best search performance for sequential keys.
+Overall, insertion on align_hash_map is the fastest among all tests. It can be seen that search operation on align_hash_map is also efficient. In addition, STL hash_map has the least memory usage and the best search performance for sequential keys.
