@@ -1,5 +1,5 @@
-Generally aligned hashing is similar to STL hash table, but a few
-points need to note.
+Generally aligned hashing is similar to STL hash table, but there are a few
+points need to be noted.
 
 First, the key, or the first class for align_hash_map/set should
 support == and < operators, though primitive types such as 'int'
