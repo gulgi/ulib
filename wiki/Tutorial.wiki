@@ -7,7 +7,11 @@
   # cd ulib_src_dir/
   # make
  
-At this time, you will have all necessary headers in ulib_src_dir/include/ and libraries in ulib_src_dir/lib/
+At this time, you will have all necessary headers in ulib_src_dir/include/ and libraries in ulib_src_dir/lib/.
+
+==Compiling Ulib on Windows==
+  # We recommend you to use the pre-compiled binaries in the download section for windows. Modifications are needed in order to compile.
+
      
 
 
