@@ -11,6 +11,6 @@ In order to obtain accurate results, key and value for the hash_maps are unsigne
   * Memory usage.
 [http://ulib.googlecode.com/svn/wiki/memory.png]
 
-As stated in the figures, aligned hashing excels in several aspects. Furthermore, ulib has included an implementation of aligned hashing for C programming, which most other libraries don't provide.
+As stated in the figures, aligned hashing excels in several aspects. Furthermore, ulib has included a C implementation of aligned hashing, which most other libraries don't provide.
 
 By using better compiler and compilation options, you can obtain a 10% to 30% speed increase in applications. It should also be noted that aligned hashing has several flags for further performance optimizations, such as AH_64BIT and AH_TIER_PROBING. This is particularly important if you use aligned hashing to applications where performance is a crucial consideration. 
