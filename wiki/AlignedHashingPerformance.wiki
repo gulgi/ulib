@@ -3,7 +3,7 @@ We compare the performance of some popular hashings. Our primary interest focuse
 The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations, memory consumption are measured using gperftools. For further details, view the source at ./perf/hash_perf.cpp.
 
 === Random Keys ===
-
+[http://code.google.com/p/ulib/source/browse/trunk/perf/hash_benchmark/result/insert.png]dd
 || *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
 || *STL Hash Map* || 50000 || 330 || 66 || *825664* ||
 || *Google Sparse Hash Map* || 50000 || 374 || 127 || 4246053 ||
