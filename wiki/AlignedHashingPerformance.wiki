@@ -1,34 +1,5 @@
-We compare the performance of some popular hashings. Our primary interest focuses on insertion and search. In order to obtain accurate results, size_t type is used for both key and value, thus ignoring memory copy of large keys/values. 
+The following is the benchmark for various hash_maps.
 
-The tests are performed on a 64-bit Linux laptop, with Intel i3 CPU and 4G memory. All test programs are compiled with GCC 4.5.2 with -O2 optimizations, memory consumption are measured using gperftools. For further details, view the source at ./perf/hash_perf.cpp.
-
-=== Random Keys ===
-[http://code.google.com/p/ulib/source/browse/trunk/perf/hash_benchmark/result/insert.png]dd
-|| *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
-|| *STL Hash Map* || 50000 || 330 || 66 || *825664* ||
-|| *Google Sparse Hash Map* || 50000 || 374 || 127 || 4246053 ||
-|| *Google Dense Hash Map* || 50000 || 102 || 43 || 2395648 ||
-|| *ULIB Align Hash Map* || 50000 || *96* || *25* || 2098176 ||
-
-|| *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
-|| *STL Hash Map* || 100000 || 384 || 92 || *1650240* ||
-|| *Google Sparse Hash Map* || 100000 || 409 || 147 || 4246053 ||
-|| *Google Dense Hash Map* || 100000 || 131 || 69 || 4782080 ||
-|| *ULIB Align Hash Map* || 100000 || *98* || *32* || 4195328 ||
-
-=== Sequential Keys ===
-
-|| *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
-|| *STL Hash Map* || 50000 || 125 || *16* || *825728* ||
-|| *Google Sparse Hash Map* || 50000 || 184 || 3536 || 4246229 ||
-|| *Google Dense Hash Map* || 50000 || 39 || 203 || 2395648 ||
-|| *ULIB Align Hash Map* || 50000 || *28* || 53 || 2098176 ||
-
-|| *Hashing* || *Map Capacity* || *Insertion Time(us)* || *Search Time(us)* || *Memory Usage(Byte)* ||
-|| *STL Hash Map* || 100000 || 129 || *20* || *1650240* ||
-|| *Google Sparse Hash Map* || 100000 || 164 || 5506 || 4246053 ||
-|| *Google Dense Hash Map* || 100000 || 46 || 340 || 4782080 ||
-|| *ULIB Align Hash Map* || 100000 || *40* || 53 || 4195328 ||
-
-== Conclusion ==
-Overall, insertion on align_hash_map is the fastest among all tests. It can be seen that search operation on align_hash_map is also efficient. In addition, STL hash_map has the least memory usage and the best search performance for sequential keys.
+[http://ulib.googlecode.com/svn/wiki/insert.png]
+[http://ulib.googlecode.com/svn/wiki/search.png]
+[http://ulib.googlecode.com/svn/wiki/memory.png]
