@@ -1,4 +1,6 @@
-The following is the benchmark for various hash_maps.
+The following tests were performed on 64-bit Linux with GCC 4.5.2, but they should give some indication for other operating systems and workloads. 
+
+By using better compiler and compilation options, you can obtain a 10% to 30% speed increase in applications. It should also be noted that aligned hashing has several flags for further performance optimizations, such as AH_64BIT and AH_TIER_PROBING. This is particularly important if you use aligned hashing to applications where performance is a crucial consideration. 
 
 [http://ulib.googlecode.com/svn/wiki/insert.png]
 [http://ulib.googlecode.com/svn/wiki/search.png]
