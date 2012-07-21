@@ -1,7 +1,14 @@
-The following tests were performed on 64-bit Linux with GCC 4.5.2, but they should give some indication for other operating systems and workloads. 
+The following tests were performed on 64-bit Linux with GCC 4.5.2, but they should give some indication for other operating systems and workloads. Three aspects of performance are covered in these tests. First, execution time per insertion, which is a key factor for write-intensive applications. Second, execution time per search, this is a fundamental performance indicator. Third, memory usage for storing the same data set.
+In order to obtain accurate results, key and value for the hash_maps are unsigned integers. Instead of using particular hash functions, the keys are regarded as hash values. So the test results should be general.
 
-By using better compiler and compilation options, you can obtain a 10% to 30% speed increase in applications. It should also be noted that aligned hashing has several flags for further performance optimizations, such as AH_64BIT and AH_TIER_PROBING. This is particularly important if you use aligned hashing to applications where performance is a crucial consideration. 
-
+  * Execution time for insertion.
 [http://ulib.googlecode.com/svn/wiki/insert.png]
+
+  * Execution time for search.
 [http://ulib.googlecode.com/svn/wiki/search.png]
+
+  * Memory usage.
 [http://ulib.googlecode.com/svn/wiki/memory.png]
+
+As stated in the figures, aligned hashing excels in several aspects. Furthermore, ulib has included an implementation of aligned hashing for C programming, which most other libraries don't provide.
+By using better compiler and compilation options, you can obtain a 10% to 30% speed increase in applications. It should also be noted that aligned hashing has several flags for further performance optimizations, such as AH_64BIT and AH_TIER_PROBING. This is particularly important if you use aligned hashing to applications where performance is a crucial consideration. 
