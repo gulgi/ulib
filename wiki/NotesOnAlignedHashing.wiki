@@ -1,25 +1,17 @@
-Generally aligned hashing is similar to STL hash table, but there are a few
-points need to be noted.
+Overall, the usage of aligned hashing is similar to STL hash table, but there are a few points need to be noted.
 
-First, the key, or the first class for align_hash_map/set should
-support == and < operators, though primitive types such as 'int'
-constitutionally implement these two operations, so do some STL
-containers like std::string. Note that align_hash_map/set currently
-don't support specifying == and < functions as template arguments.
-In addition, the key class should also implements a size_t operator,
-which converts the class instance to its integer representation. This
-conversion needs not to be invertible and is usually done by using
-a hash function.
+First, three operators should be supported for the key class of aligned hash_map/set, namely '==', '<' and unsigned long(usu. a hash function). In contrast to STL, which supports optionally providing classes for these operations as hash_map/set template arguments, aligned hashing requires key class intrinsically
+includes implementations of the operations, and there is no optional template arguments avaible for them. Otherwise, one must write a wrapper class as the key that bundle the three operations in one class.
 
-Second, key and value of align_hash_map/set iterator are referred
-through key() and value() member functions instead of using 'first'
-and 'second' structure members due to performance considerations.
+Second, key and value of align_hash_map/set iterator are accessed
+using key() and value() member functions instead of 'first'
+and 'second' structure members. This is because aligned hashing stores key and
+value separately to achieve better cache utilization. The data structure for the element isn't std::pair and thereby doesn't have 'first' and 'second' members.
 
-Lastly, advanced user can specify special flags to enable/disable
-features. For example, align_hash_map/set will use 64-bit addressing
-instead of 32-bit if the flag AH_64BIT is set. This has some
-performance advantages on 64-bit OS. Performance can be further
-improved by setting the AH_TIER_PROBING flag when the size of
-align_hash_map/set object is known to be small beforehand.
+Lastly, a few flags are provided in aligned hashing for performance optimization. For example, align_hash_map/set will use 64-bit addressing is AH_64BIT is set. Enabling the flag could improve the performance of aligned hashing on 64-bit OSes. Furthermore, enabling AH_TIER_PROBING will tell aligned hashing to use double hashing probing, which is preferable for small hash_maps/sets.
 
-Sample usage can be found at test_alignhash.cpp under test/.
+Disadvantages:
+
+Currently, the C++ container classes of aligned hashing are based on the C version, which relies on malloc/free for memory management. This could be problematic when key class uses custom constructor/destructor functions because neither of them will be called. Nevertheless, one can instead use pointer as the key, which is always preferable if the size of key is greater than the CPU wordsize.
+
+I will add an allocator for aligned hashing when I have time, this should remove the above limitation. :)
