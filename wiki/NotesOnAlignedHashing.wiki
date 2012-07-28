@@ -8,7 +8,7 @@ using key() and value() member functions instead of 'first'
 and 'second' structure members. This is because aligned hashing stores key and
 value separately to achieve better cache utilization. The data structure for the element isn't std::pair and thereby doesn't have 'first' and 'second' members.
 
-Lastly, a few flags are provided in aligned hashing for performance optimization. For example, align_hash_map/set will use 64-bit addressing is AH_64BIT is set. Enabling the flag could improve the performance of aligned hashing on 64-bit OSes. Furthermore, enabling AH_TIER_PROBING will tell aligned hashing to use double hashing probing, which is preferable for small hash_maps/sets.
+Lastly, a few flags are provided in aligned hashing for performance optimization. For example, align_hash_map/set will use 64-bit addressing if AH_64BIT is set. Enabling the flag could improve the performance of aligned hashing on 64-bit OSes. Furthermore, enabling AH_TIER_PROBING will tell aligned hashing to use double hashing probing, which is preferable for small hash_maps/sets.
 
 Disadvantages:
 
