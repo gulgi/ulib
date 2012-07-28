@@ -14,3 +14,5 @@ In order to obtain accurate results, key and value for the hash_maps are unsigne
 As stated in the figures, aligned hashing has very outstanding performance as compared with other well-implemented libraries. Most importantly, search for random key and insertion for both sequential and random keys in aligned hashing are the fastest. It can also be seen that search for sequential key in alignhash is faster than its counterparts do except EASTL hash_map, which caches the items. Furthermore, a C implementation of aligned hashing is provided in ulib while most other libraries don't.
 
 By using better compiler and compilation options, you can obtain a 10% to 30% speed increase in applications. It should also be noted that aligned hashing has several flags for further performance optimization, such as AH_64BIT and AH_TIER_PROBING. This is particularly important if you use aligned hashing in applications where performance is a crucial consideration.
+
+Be sure that you have read the wiki on aligned hashing before using it.
