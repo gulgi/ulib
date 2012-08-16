@@ -21,6 +21,8 @@ I assume you have already compiled ulib. Now let's take a look at some simple ex
 #include <stdio.h>
 #include <ulib/alignhash.h>  // with ulib/ prefix
 
+using namespace ulib;  // this is only for trunk version of ulib.
+
 int main()
 {
         align_hash_map<int,int> intmap;  // declare a int-to-int map
