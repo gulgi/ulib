@@ -10,7 +10,7 @@ value separately to achieve better cache utilization. The data structure for the
 
 Lastly, a few flags are provided in aligned hashing for performance optimization. For example, align_hash_map/set will use 64-bit addressing if AH_64BIT is set. Enabling the flag could improve the performance of aligned hashing on 64-bit OSes. Furthermore, enabling AH_TIER_PROBING will tell aligned hashing to use double hashing probing, which is preferable for small hash_maps/sets.
 
-Disadvantages:
+Limitations:
 
 Currently, the C++ container classes of aligned hashing are based on the C version, which relies on malloc/free for memory management. This could be problematic when key class uses custom constructor/destructor functions because neither of them will be called. Nevertheless, one can instead use pointer as the key, which is always preferable if the size of key is greater than the CPU wordsize.
 
