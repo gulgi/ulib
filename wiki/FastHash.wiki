@@ -398,9 +398,13 @@ Testing distribution - Worst bias is the  17-bit window at bit  42 - 0.079%
 Input vcode 0x00000001, Output vcode 0x00000001, Result vcode 0x00000001
 Verification value is 0x00000001 - Testing took 1718.040000 seconds
 -------------------------------------------------------------------------------
-}}}
 
-{{{
+
+
+
+
+
+
 -------------------------------------------------------------------------------
 --- Testing FastHash64 (Ulib's FastHash for x86-64, 64-bit.)
 
