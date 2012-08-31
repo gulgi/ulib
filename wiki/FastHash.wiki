@@ -1,0 +1,14 @@
+#labels Phase-Design
+This hash family is automatically generated according to certain fitness functions. They are advantageous in several respects: (1) Optimized parameters, which involve those magic numbers used in the hash function, and even the hash function framework; (2) Guaranteed robustness, collisions are rigorously controlled in our fitness function, so the resulted hash functions are collision resistant. (3) Superior performance as compared with many famous implementations.
+Fitness Assessment
+
+    Avalanche test, change in each input bits should equally (with probability 0.5) change every bit of the resulting hash value. So for a good hash function, each of the hash value bit would have a probability of change that is approximately 0.5. The absolute difference between the actual probability and ideal probability (0.5) is passed to a score function, which evaluates the performance. Finally, an overall score, arithmetic average of scores for every input bit, gives a summary of avalanche quality of test hash function.
+    Independence test, we have applied several non-parametric statistical methods to measure the independence of hash value bits. The scores given by each test would eventually combined and normalized as an indicator of independence.
+    Speed test, this involves the time required by test hash function to complete a series of tasks.
+    The fitness function is a linear combination of scores from above tests. 
+
+Experimental Results
+
+We have applied our optimization algorithm to maximize the fitness define above. In particular, some basic binary operations were considered, e.g., XOR, ADD, SHIFT_LEFT/RIGHT, MUL, etc. Also, we restricted our hash function class to fit the merkle-damgard construction framework, which is widely used in many well-known cryptographic hash functions such as md5 and sha family.
+
+Several good-fit hash functions were derived. We tested the generated hash function on SMHasher(http://code.google.com/p/smhasher/), which serves as the DieHard test for non-cryptographic hash functions. Surprisingly, the result looks promising: notably our functions have quite decent hash value distribution and perform well among all tests while MurmurHash2 failed several differential tests due to slightly biased hash value distributions. 
