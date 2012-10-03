@@ -4,7 +4,7 @@
 It is generally believed that the performance of parallel algorithms relies on the very design of lock-free infrastructure.  However, I find quite telling the fact that the chainhash implementation which is based on region locks appears to be significantly faster than a number of popular lock-free implementations, e.g., nbds, split-ordered lists hashtable in visual studio 2012. The success of chainhash lies on the fact that the lock operation itself is efficient and by using sufficient number of locks the probability is very low for any two threads to contend for the same lock at the same time in practice. In other words, the behaviors on chainhash are very much mimicking those of an ideally lock-free implementation.
 
 
-We might ask: how many locks are sufficient to keep the collision probability satisfactorily small? Here's a formula: the overhead introduced by locking to the cost of an ideally lock-free algorithm is K to L, where K is the smaller of the number of CPU cores and running threads and L is the number of locks. Thus it is now clear that by choosing L that is larger than K the performance of chainhash approaches the optimal.
+We also might ask: how many locks are sufficient to keep the collision probability satisfactorily small? Here's a formula: the overhead introduced by locking to the cost of an ideally lock-free algorithm is K to L, where K is the smaller of the number of CPU cores and running threads and L is the number of locks. Thus it is now clear that by choosing L that is larger than K the performance of chainhash approaches the optimal.
 
 
 In sum, certain lock-based implementations can still be competitive against their more famous lock-free cousins. A telling example would be the chainhash in ulib.
