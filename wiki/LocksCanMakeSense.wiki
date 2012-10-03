@@ -7,7 +7,7 @@ It is generally believed that the performance of parallel algorithms relies on t
 We also might ask: how many locks are sufficient to keep the collision probability satisfactorily small? Here's a formula: the overhead introduced by locking to the cost of an ideally lock-free algorithm is K to L, where K is the smaller of the number of CPU cores and running threads and L is the number of locks. Thus it is now clear that by choosing L that is larger than K the performance of chainhash approaches the optimal.
 
 
-While it is appealing to increase the number of threads and locks to achieve more performance speedup, too many threads or locks can on the contrary undermine application performance. This is because operating system has to keep the state of locks which is usually list-based. Apparently, if there are many more running threads than the number of cores, the maintenance cost becomes prevalent. As a result, keep the number of threads below or equal to the maximum cores is vital for good performance.
+While it is appealing to increase the number of threads and locks to achieve better performance speedup, too many threads or locks can on the contrary undermine application performance. This is because operating system has to keep the state of locks which is usually list-based. Apparently, if there are many more running threads than the number of cores, the maintenance cost becomes prevalent. As a result, keep the number of threads below or equal to the maximum cores is vital for good performance.
 
 
 In sum, certain lock-based implementations can still be competitive against their more famous lock-free cousins. A telling example would be the chainhash in ulib.
