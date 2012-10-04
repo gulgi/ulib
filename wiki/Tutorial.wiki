@@ -1,31 +1,30 @@
 #labels Featured
-#A Short Introduction
+= A Quick Tour =
 
-= Compiling Ulib =
-
-== Compiling Ulib on Linux OSes ==
+== Compiling ulib on Linux ==
   # Untar/svn checkout the source.
   # cd ulib_src_dir/
   # make
- 
-At this time, you will have all necessary headers in ulib_src_dir/include/ and libraries in ulib_src_dir/lib/.
-
-== Compiling Ulib on Windows ==
-  # We recommend you to use the pre-compiled binaries in the download section for windows. Modifications are needed in order to compile.
+  Now we have all necessary headers and libraries under include/ and lib/ respectively.
+----
+  Note: pre-compiled binaries for Windows can be found under the download tab.
 
 = Examples =
-I assume you have already compiled ulib. Now let's take a look at some simple examples.
 
-== Play with aligned hashmap ==
+== The Hello-world for Aligned Hash Map ==
 {{{
+//
+// intmap.cpp
+//
+
 #include <stdio.h>
 #include <ulib/alignhash.h>  // with ulib/ prefix
 
-using namespace ulib;  // namespace needed since 1.2.1 beta
+using namespace ulib;   // namespace for all ulib containers
 
 int main()
 {
-        align_hash_map<int,int> intmap;  // declare a int-to-int map
+        align_hash_map<int,int> intmap;  // define a int-to-int map
 
         intmap[1] = 2;
         intmap[2] = 3;
@@ -37,9 +36,8 @@ int main()
 }
 }}}
 
-Save above code to intmap.cpp, and then compile it with g++ -I path_to_ulib_include intmap.cpp -o intmap. The output of the program should be:
+Compile above code with g++ -I path_to_ulib_include intmap.cpp -o intmap. The program output should look like this:
 {{{
 intmap[1] = 2
 intmap[2] = 3
 }}}
-Just as what we expected.
