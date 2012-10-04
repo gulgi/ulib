@@ -5,7 +5,7 @@
   # Untar/svn checkout the source.
   # cd ulib_src_dir/
   # make
-  Now we have all necessary headers and libraries under include/ and lib/ respectively.
+  Now we have all the necessary headers and libraries under include/ and lib/ respectively.
 ----
   Note: pre-compiled binaries for Windows can be found under the download tab.
 ----
