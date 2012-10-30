@@ -6,7 +6,7 @@ Fasthash is a hash function family generated through discrete optimization. It i
   * Avalanche test: change in each input bit equally affect every bit of the hash value. Otherwise the hash value is biased. 
   * Independence test, hash value bits should be independent from each other. Non-parametric statistics is used to evaluate the independence.
   * Speed test, takes into account the execution time of resulting hash function.
-==Experimental Results==
+==Results==
 We obtained fasthash through discrete optimization with respect to above criterion. SMHasher(http://code.google.com/p/smhasher/) results show that fasthash is better than Google murmurhash2 in performance and hash value distribution.
 
 The complete SMHash results are as follows:
