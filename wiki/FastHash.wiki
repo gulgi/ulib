@@ -1,6 +1,6 @@
 #labels Phase-Design
 ==What is fast-hash?==
-Fasthash is a hash function family generated through discrete optimization. It is advantages on two counts: (1) without loss of quality the number of operations in fasthash is minimized, and (2) decent hash value distribution is guaranteed for any input type--string, integer, byte stream, and etc. In short, fasthash efficiently produces hash values with optimal collisions.
+Fasthash is a hash function family generated through discrete optimization. It is advantages on two counts: (1) without loss of quality the number of operations in fasthash is minimized, and (2) decent hash value distribution is guaranteed for any input type--string, integer, byte stream, and etc. In short, fasthash can efficiently produces hash values with optimal collisions.
 ==Fitness Measurement==
   A number of aspects are considered for fitness measurement.
   * Avalanche test: change in each input bit equally affect every bit of the hash value. Otherwise the hash value is biased. 
