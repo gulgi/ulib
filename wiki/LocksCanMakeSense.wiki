@@ -1,5 +1,5 @@
 #labels Phase-Design
-== An Explanation of Chainhash and Potential Improvements==
+== An Explanation of Chainhash and Potential Improvements ==
 
 It is generally believed that the performance of parallel algorithms relies on the very design of lock-free infrastructure.  However, I find quite telling the fact that the chainhash implementation which is based on region locks appears to be significantly faster than a number of popular lock-free implementations, e.g., nbds, split-ordered lists hashtable in visual studio 2012. The success of chainhash lies on the fact that the lock operation itself is efficient and by using sufficient number of locks the probability is quite low for any two threads to contend for the same lock at the same time in practice. In other words, the behaviors on chainhash are very much mimicking those of an optimal implementation.
 
