@@ -3,13 +3,13 @@ The following tests are based on 64-bit Linux with GCC 4.5.2, but they should gi
 For the results to be accurate, unsigned int is chosen as key and value types. Instead of using any particular hash function, the key is directly used as hash value. That is, h(x)=x is our hash function.
 
   * Execution time for insertion.
-[http://ulib.googlecode.com/svn/wiki/insert.png]
+[http://ulib.googlecode.com/svn/wiki/ah_ins.png]
 
   * Execution time for search.
-[http://ulib.googlecode.com/svn/wiki/search.png]
+[http://ulib.googlecode.com/svn/wiki/ah_find.png]
 
   * Memory usage.
-[http://ulib.googlecode.com/svn/wiki/memory.png]
+[http://ulib.googlecode.com/svn/wiki/ah_mem.png]
 
 According to the experiments, aligned hashing has very outstanding performance as compared with other well-implemented libraries: it is the fastest in random search and insertion for both sequential and random keys.  In addition, sequential search speed is also excellent for aligned hash_map, though EASTL is the winner due to its hash code cache. Furthermore, ulib provides both C  and C++ implementations of aligned hashing while most other libraries support C++ only.
 
