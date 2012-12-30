@@ -1,2 +1,2 @@
-[avl_ins.png]
-[avn_find.png]
+[http://ulib.googlecode.com/svn/wiki/avl_ins.png]
+[http://ulib.googlecode.com/svn/wiki/avl_find.png]
