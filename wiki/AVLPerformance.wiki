@@ -6,7 +6,7 @@ First, we fed each AVL tree with 64bit random numbers during which the insertion
 
 [http://ulib.googlecode.com/svn/wiki/avl_ins.png]
 
-Next, we perform massive random searches on those AVL trees and the search speed was measured. The following figure depicts the search performance for various tree sizes.
+Next, we performed massive random searches on those AVL trees and the search speed was measured. The following figure depicts the search performance for various tree sizes.
 
 [http://ulib.googlecode.com/svn/wiki/avl_find.png]
 
