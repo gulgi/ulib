@@ -1,16 +1,16 @@
 #labels Phase-Design
-== An Explanation of Chainhash and Potential Improvements ==
+Analysis of Chained Hashing
 
-It is generally believed that the performance of parallel algorithms relies on the very design of lock-free infrastructure.  However, I find quite telling the fact that the chainhash implementation which is based on region locks appears to be significantly faster than a number of popular lock-free implementations, e.g., nbds, split-ordered lists hashtable in visual studio 2012. The success of chainhash lies on the fact that the lock operation itself is efficient and by using sufficient number of locks the probability is quite low for any two threads to contend for the same lock at the same time in practice. In other words, the behaviors on chainhash are very much mimicking those of an optimal implementation.
+Although it is generally believed that lock-free designs are more preferable to lock-based ones. We argue that the Chained hashing, which based on fine-grained locking, can outstrip many popular lock-free implementations theoretically and practically.
 
+As a threshold matter, the lock-free version of an operation usually detours the operation, allowing for various exceptions. Thus it requires additional fix ups and could be error-prone.
 
-We also might ask: how many locks are sufficient to keep the collision probability satisfactorily small? Here's a formula: the overhead introduced by locking to the cost of an ideally lock-free algorithm is K to L, where K is the smaller of the number of CPU cores and running threads and L is the number of locks. It is now clear that by choosing L that is larger than K the performance of chainhash approaches the optimal.
+In contrast, lock-based designs are generally more intuitive than those lock-free one and sometimes could be superior, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
 
+The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock is associated with one or more chains and acquiring the lock is need to access these associated chains.
 
-While it is appealing to increase the number of threads and locks to achieve better performance speedup, too many threads or locks can, on the contrary, undermine application performance. This is because operating system has to keep the state of locks up-to-date. Apparently, if there are many more running threads than the number of cores, the maintenance cost becomes a prominent factor. As a result, keeping the number of threads below or equal to the maximum cores is vital for good performance.
+The reasons in favor of the lock-based design over other lock-free ones involve simplicity of implementation, ease of analysis, and sound performance guarantees. Witness that acquiring or releasing a lock is quite efficient per se on modern architectures, provided no contentions. In addition, our lock-based design is provably scalable and efficient.
 
+Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is NU(1/L + 1/M), where U is the average per operation time without locking.
 
-Another element to consider is the thread scheduling policy. Though it might seem trivial as it sounds, in my observation the cost of context switching among threads could be a real problem. One way to reveal the impact of scheduling policy is to use FIFO scheduler for the threads. There would be no context switch under FIFO giving that each thread has the same priority. The difference in performance should be obvious--especially under large workloads. For those who are interested in improving the performance one step further can use FIFO scheduler for their working threads.
-
-
-In sum, certain lock-based implementations can still be competitive against their more famous lock-free cousins. A telling example would be the chainhash in ulib. To improve the performance of chainhash, the number of locks should be chosen larger than the maximum number concurrent threads. Thread scheduling policy makes a difference also.
+The above theorem asserts that only limited number of locks is sufficient to achieve good performance and scalability. The time overhead introduced by the locking, compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would sufficiently guarantee a merely 1% overhead.
