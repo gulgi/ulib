@@ -11,6 +11,6 @@ The chained hashing adopts region locks to synchronize modification on each chai
 
 The reasons in favor of the lock-based design over other lock-free ones involve simplicity of implementation, ease of analysis, and sound performance guarantees. Witness that acquiring or releasing a lock is quite efficient per se on modern architectures, provided no contentions. In addition, our lock-based design is provably scalable and efficient.
 
-*Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is _NU(1/L + 1/M)_, where U is the average per operation time without locking.*
+*Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is less than _NU(1/L + 1/M)_, where U is the average per operation time without locking.*
 
-The above theorem asserts that only limited number of locks is sufficient to achieve good performance and scalability. The time overhead introduced by the locking, compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would sufficiently guarantee a 1% overhead.
+The above theorem asserts that only limited number of locks is sufficient to achieve good performance and scalability. The time overhead introduced by the locking, compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would sufficiently guarantee a less than 1% overhead.
