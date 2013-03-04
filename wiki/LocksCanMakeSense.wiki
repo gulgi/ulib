@@ -1,5 +1,5 @@
 #labels Phase-Design
-Analysis of Chained Hashing
+===Analysis of Chained Hashing===
 
 Although it is generally believed that lock-free designs are more preferable to lock-based ones. We argue that the Chained hashing, which based on fine-grained locking, can outstrip many popular lock-free implementations theoretically and practically.
 
