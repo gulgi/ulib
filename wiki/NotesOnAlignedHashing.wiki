@@ -6,4 +6,5 @@ In addition, an iterator for aligned hash map/set does not have 'first' or
 'second' data members. Instead, key and value for an iterator are accessed through key() and value() member functions respectively. 
 
 *Limitation*
+
 The C++ containers for aligned hash table are based on the C version, which uses malloc/free to manage memory. This could be problematic when key/value of the hash table owns a customized constructor or destructor. In both cases, you can use pointer to the key/value instead, which should be recommended, especially for key/value larger than a CPU word size.
