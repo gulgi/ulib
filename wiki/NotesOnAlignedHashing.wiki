@@ -1,17 +1,9 @@
 The usage of aligned hashing is similar to STL hash_map/set, but there are a few points need to be noted.
 
-First, three operators should be supported for the key class of aligned hash_map/set, namely '==', '<' and unsigned long(usu. a hash function). In contrast to STL, which supports optionally providing classes for these operations as hash_map/set template arguments, aligned hashing requires the key class intrinsically
-includes implementations of the operations, and there is no optional template arguments avaible for them. Otherwise, one must write a wrapper class as the key that bundle the three operations in one class.
+First, aligned hash map/set requires the key type supports '==' and 'long' operators. Some basic types such as 'int' and 'long' inherently support these operators; otherwise you need to implement the operators for the key type.
 
-Second, key and value of align_hash_map/set iterator are accessed
-using key() and value() member functions instead of 'first'
-and 'second' structure members. This is because aligned hashing stores key and
-value separately to achieve better cache utilization. The data structure for the element isn't std::pair and thereby doesn't have 'first' and 'second' members.
+In addition, an iterator for aligned hash map/set does not have 'first' or 
+'second' data members. Instead, key and value for an iterator are accessed through key() and value() member functions respectively. 
 
-Lastly, a few flags are provided in aligned hashing for performance optimization. For example, align_hash_map/set will use 64-bit addressing if AH_64BIT is set. Enabling the flag could improve the performance of aligned hashing on 64-bit OSes. Furthermore, enabling AH_TIER_PROBING will tell aligned hashing to use double hashing probing, which is preferable for small hash_maps/sets.
-
-Limitations:
-
-Currently, the C++ container classes of aligned hashing are based on the C version, which relies on malloc/free for memory management. This could be problematic when key class uses custom constructor/destructor functions because neither of them will be called. Nevertheless, one can instead use pointer as the key, which is always preferable if the size of key is greater than the CPU wordsize.
-
-I will add an allocator for aligned hashing when I have time, this should remove the above limitation. :)
+*Limitation*
+The C++ containers for aligned hash table are based on the C version, which uses malloc/free to manage memory. This could be problematic when key/value of the hash table owns a customized constructor or destructor. In both cases, you can use pointer to the key/value instead, which should be recommended, especially for key/value larger than a CPU word size.
