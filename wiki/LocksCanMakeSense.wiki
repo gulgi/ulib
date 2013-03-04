@@ -5,7 +5,7 @@ Although it is generally believed that lock-free designs are more preferable to 
 
 As a threshold matter, the lock-free version of an operation usually detours the operation, allowing for various exceptions. Thus it requires additional fix ups and could be error-prone.
 
-In contrast, lock-based designs are generally more intuitive than those lock-free one and sometimes could be superior, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
+In contrast, lock-based designs are generally more intuitive than those lock-free ones and sometimes could be superior, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
 
 The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock is associated with one or more chains and acquiring the lock is need to access these associated chains.
 
