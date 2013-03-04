@@ -1,4 +1,4 @@
-Overall, the usage of aligned hashing is similar to STL hash_map/set, but there are a few points need to be noted.
+The usage of aligned hashing is similar to STL hash_map/set, but there are a few points need to be noted.
 
 First, three operators should be supported for the key class of aligned hash_map/set, namely '==', '<' and unsigned long(usu. a hash function). In contrast to STL, which supports optionally providing classes for these operations as hash_map/set template arguments, aligned hashing requires the key class intrinsically
 includes implementations of the operations, and there is no optional template arguments avaible for them. Otherwise, one must write a wrapper class as the key that bundle the three operations in one class.
