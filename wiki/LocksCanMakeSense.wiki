@@ -1,16 +1,16 @@
 #labels Phase-Design
 ===Analysis of Chained Hashing===
 
-Although it is generally believed that lock-free designs are more preferable than lock-based ones. We argue that the Chained hashing, which based on fine-grained locking, can outstrip many popular lock-free implementations theoretically and practically.
+Although it is generally believed that lock-free designs are more preferable than lock-based ones, we observed that the chained hashing, which is based on fine-grained locking, can outstrip many popular lock-free implementations theoretically and practically.
 
 As a threshold matter, the lock-free version of an operation usually detours the operation, allowing for various exceptions. Thus it requires additional fix ups and could be error-prone.
 
-In contrast, lock-based designs are generally more intuitive than those lock-free ones and sometimes could be superior, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
+In contrast, lock-based designs are generally more intuitive than, and sometimes even superior to, those lock-free ones, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
 
-The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock is associated with one or more chains and acquiring the lock is need to access these associated chains.
+The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock assigned to one or more chains and that access to these chains must first perform a locking operating on that lock.
 
-The reasons in favor of the lock-based design over other lock-free ones involve simplicity of implementation, ease of analysis, and sound performance guarantees. Witness that acquiring or releasing a lock is quite efficient per se on modern architectures, provided no contentions. In addition, our lock-based design is provably scalable and efficient.
+The reasons in favor of the lock-based design over other lock-free ones involve simplicity of implementation, ease of analysis, and sound performance guarantees. Witness that acquiring or releasing a lock is quite efficient per se on modern architectures, provided that no contention occurs. In the example of chained hashing, careful scrutiny further reveals that the overhead introduced by locking depends on merely the number of region locks used. In particular,
 
 *Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is less than _NU(1/L + 1/M)_, where U is the average per operation time without locking.*
 
-The above theorem asserts that only limited number of locks is sufficient to achieve good performance and scalability. The time overhead introduced by the locking, compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would sufficiently guarantee a less than 1% overhead.
+The above theorem asserts that only limited number of locks is sufficient to achieve good performance. The time overhead introduced by the locking, as compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would adequately guarantee a less than 1% overhead.
