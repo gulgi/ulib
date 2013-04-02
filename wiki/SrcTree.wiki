@@ -1,4 +1,5 @@
 #labels Phase-Design
+{{
 .
 |-- include                  -- output headers for the library
 |-- lib                      -- output static libraries
@@ -24,3 +25,4 @@
 |       |-- reentrant        -- thread-safe items
 |       `-- thread           -- thread and scheduling primitives
 `-- test                     -- tests for everything
+}}
