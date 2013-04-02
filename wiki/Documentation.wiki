@@ -1,5 +1,5 @@
 #labels Featured
-An overview of the source tree: [SrcTree].
+  * An overview of the source tree: [SrcTree].
 
 ==How to Build This Library==
 Use 'make' to build the entire library. After that you will have the
