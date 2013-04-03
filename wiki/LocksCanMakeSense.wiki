@@ -5,7 +5,7 @@ Although it is generally believed that lock-free designs are more preferable tha
 
 As a threshold matter, the lock-free version of an operation usually detours the operation, allowing for various exceptions. Thus it requires additional fix ups and could be error-prone.
 
-In contrast, lock-based designs are generally more intuitive than, and sometimes even superior to, those lock-free ones, given scalable locks (http://pdos.csail.mit.edu/papers/linux:lock.pdf) and careful design.
+In contrast, lock-based designs are generally more intuitive than, and sometimes even superior to, those lock-free ones, given scalable locks [1] and careful design.
 
 The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock assigned to one or more chains and that access to these chains must first perform a locking operating on that lock.
 
@@ -14,3 +14,6 @@ The reasons in favor of the lock-based design over other lock-free ones involve 
 *Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is less than _NU(1/L + 1/M)_, where U is the average per operation time without locking.*
 
 The above theorem asserts that only limited number of locks is sufficient to achieve good performance. The time overhead introduced by the locking, as compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would adequately guarantee a less than 1% overhead.
+
+Reference
+[1] Boyd-Wickizer, Silas, et al. "Non-scalable locks are dangerous." Proceedings of the Linux Symposium, Ottawa, Canada. 2012.
