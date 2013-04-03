@@ -16,4 +16,4 @@ The reasons in favor of the lock-based design over other lock-free ones involve 
 The above theorem asserts that only limited number of locks is sufficient to achieve good performance. The time overhead introduced by the locking, as compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would adequately guarantee a less than 1% overhead.
 
 ===Reference===
-`[1]` Boyd-Wickizer, Silas, et al. "Non-scalable locks are dangerous." Proceedings of the Linux Symposium, Ottawa, Canada. 2012.
+`[1]` Boyd-Wickizer, S., Kaashoek, M. F., Morris, R., & Zeldovich, N. (2012, July). Non-scalable locks are dangerous. In Proceedings of the Linux Symposium, Ottawa, Canada.
