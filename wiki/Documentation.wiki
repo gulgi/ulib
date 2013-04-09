@@ -7,4 +7,4 @@ headers reside under the include/ and static libraries under the
 lib/. Alternatively, you can perform 'make release' to strip the
 debugging information.
 
-To compile the library with compilers other than GCC, for example, Intel C++ compiler, you can do `make CC=icc CXX=icpc`.
+To compile the library with compilers other than GCC, for example, Intel C++ compiler, you can do "make CC=icc CXX=icpc".
