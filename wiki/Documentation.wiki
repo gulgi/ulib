@@ -4,7 +4,7 @@
 ==How to Build This Library==
 Use 'make' to build the entire library. After that you will have the
 headers reside under the include/ and static libraries under the
-lib/. Alternatively, you can perform 'make release' to strip the
+lib/. Alternatively, you can also perform 'make release' to strip the
 debugging information.
 
-To compile the library with compilers other than GCC, for example, Intel C++ compiler, you can do "make CC=icc CXX=icpc AR=xiar".
+To compile the library with other compilers, for example, Intel C++ compiler, you can do "make CC=icc CXX=icpc AR=xiar".
