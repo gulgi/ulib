@@ -1,10 +1,7 @@
 #labels Featured
-  * An overview of the source tree: [SrcTree].
+==Compile the Library==
+Use 'make' to build the library. Alternatively, you can use 'make
+release' to build the library as well as strip the debug information.
 
-==How to Build This Library==
-Use 'make' to build the entire library. After that you will have the
-headers reside under the include/ and static libraries under the
-lib/. Alternatively, you can also perform 'make release' to strip the
-debugging information.
-
-To compile the library with other compilers, for example, Intel C++ compiler, you can do "make CC=icc CXX=icpc AR=xiar".
+It is recommended to perform a 'make test' once you have compiled the
+library. This will start various self-tests.
