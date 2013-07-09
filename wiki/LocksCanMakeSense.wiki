@@ -1,19 +1,16 @@
 #labels Phase-Design
-===Analysis of the Chained Hashing===
+===Analysis of the Chaining Hash Table===
 
-Although it is generally believed that lock-free designs are more preferable than lock-based ones, we observed that the chained hashing, which is based on fine-grained locking, can outstrip many popular lock-free implementations theoretically and practically.
+It is believed that lock-free designs are preferred over lock-based ones, however, the latter could still be desirable, given careful design. One telling example is the ulib's chaining hash table, which outstrips several popular lock-free implementations in both theory and practice.
 
-As a threshold matter, the lock-free version of an operation usually detours the operation, allowing for various exceptions. Thus it requires additional fix ups and could be error-prone.
+The chaining hash table adopts regional locks to serialize concurrent modifications to each chain. Specifically, each lock is associated with one or more chains, of which the access requires acquisition of the lock. Thus, only the thread holding the lock can alter the chains at any instant.
 
-In contrast, lock-based designs are generally more intuitive than, and sometimes even superior to, those lock-free ones, given scalable locks `[1]` and careful design.
+This implementation is intuitive, concise, and most importantly scalable. To understand why it is scalable, we should first figure out how many locks are sufficient. We have the following theorem:
 
-The chained hashing adopts region locks to synchronize modification on each chain. Specifically, each lock assigned to one or more chains and that access to these chains must first perform a locking operating on that lock.
+*Theorem 1: Given a chaining hash table with L locks are concurrently accessed by M threads, then the expected completion time for processing N operations, such as insertion and search, is between _NT(1/L + 1/M - 1/(LM))_ and _NT(1/L + 1/M)_, where T is the average per operation time without locking.*
 
-The reasons in favor of the lock-based design over other lock-free ones involve simplicity of implementation, ease of analysis, and sound performance guarantees. Witness that acquiring or releasing a lock is quite efficient per se on modern architectures, provided that no contention occurs. In the example of chained hashing, careful scrutiny further reveals that the overhead introduced by locking depends on merely the number of region locks used. In particular,
+This theorem suggests that the overhead posed by regional locks amounts to _T/L_, in the worst case, for any operation that has a completion time of T without the presence of regional locks. In other words, _1/L_ percent extra work is required for any operation as a result of the locking strategy in chaining hash table, giving a speedup of at least (LM)/(L + M) in the worst case.
 
-*Theorem 1: If a chained hash table with L locks are concurrently accessed by M threads, then the average execution time for processing N operations, insertion or search, is less than _NU(1/L + 1/M)_, where U is the average per operation time without locking.*
+On the other hand, lock-free implementations are generally more sophisticate and much less intuitive than lock-based ones. The lock-free version of an operation usually detours the operation and incurs various exceptions to handle. Even if lock-free is ultimately achieved, the additional work introduced to get it working might be expensive.
 
-The above theorem asserts that only limited number of locks is sufficient to achieve good performance. The time overhead introduced by the locking, as compared to the ideal model, is NU/L. Moreover, if C processors are available, then setting L=100C would adequately guarantee a less than 1% overhead.
-
-===Reference===
-`[1]` Boyd-Wickizer, S., Kaashoek, M. F., Morris, R., & Zeldovich, N. (2012, July). Non-scalable locks are dangerous. In Proceedings of the Linux Symposium, Ottawa, Canada.
+Another drawback of lock-free implementations is that they often use specific atomic operations, which are hardware dependent. For example, compare-and-swap (CAS) and fetch-and-store (FAS) are two frequently used atomic routines in lock-free algorithms. One risk of using these routines involves that torrential performance CAS or FAS among threads overwhelms the system bus, which dramatically undermines the overall performance of the application.
