@@ -9,7 +9,7 @@ This implementation is intuitive, concise, and most importantly scalable. To und
 
 *Theorem 1: Given a chaining hash table with L locks are concurrently accessed by M threads, then the expected completion time for processing N operations, such as insertion and search, is between _NT(1/L + 1/M - 1/(LM))_ and _NT(1/L + 1/M)_, where T is the average per operation time without locking.*
 
-This theorem suggests that the overhead posed by regional locks amounts to _T/L_, in the worst case, for any operation that has a completion time of T without the presence of regional locks. In other words, _1/L_ percent extra work is required for any operation as a result of the locking strategy in chaining hash table, giving a speedup of at least (LM)/(L + M) in the worst case.
+This theorem suggests that the overhead posed by regional locks amounts to _T/L_, in the worst case, for any operation that has a completion time of T without the presence of regional locks. In other words, _1/L_ percent extra work is required for any operation as a result of the locking strategy in chaining hash table, giving a speedup of at least _(LM)/(L + M)_ in the worst case.
 
 On the other hand, lock-free implementations are generally more sophisticate and much less intuitive than lock-based ones. The lock-free version of an operation usually detours the operation and incurs various exceptions to handle. Even if lock-free is ultimately achieved, the additional work introduced to get it working might be expensive.
 
