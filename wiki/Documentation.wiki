@@ -1,12 +1,11 @@
 #labels Featured
-==Compile the Library==
+*Compiling the ULIB:*
 Use 'make' to build the library. Alternatively, you can use 'make
 release' to build the library as well as strip the debug information.
 
 It is recommended to perform a 'make test' once you have compiled the
 library. This will start various self-tests.
 
----
 *Known Issues:*
 
 It is known that certain GCCs generate buggy code, incurring
