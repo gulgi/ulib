@@ -2,7 +2,7 @@
 *Compiling the ULIB:*
 
 Use 'make' to build the library. Alternatively, you can use 'make
-release' to build the library as well as strip the debug information.
+release' to build the library as well as to strip the debug information.
 
 It is recommended to perform a 'make test' once you have compiled the
 library. This will start various self-tests.
