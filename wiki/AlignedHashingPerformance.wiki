@@ -1,16 +1,10 @@
-The performance tests are based on 64-bit Linux with GCC 4.5.2, but they should give some indication for other operating systems and workloads. These tests focused on the memory consumption and the execution of insertion and search. 
+The following experiments were based on 64-bit Linux with GCC 4.5.2. For better objectivity, the identity hash function, f(x)=x, was used for all experiments.
 
-To rule out other potentially affecting factors, e.g., hash function, key/value size/type, the identity hash function h(x)=x was used and key/value were both chosen to be unsigned long.
-
-The following figures illustrate various benchmarks:
-
-  * Insertion Execution Time (the less the better)
+  * Insert Execution Time (less is better)
 [http://ulib.googlecode.com/svn/wiki/ah_ins.png]
 
-  * Search Execution Time (the less the better)
+  * Search Execution Time (less is better)
 [http://ulib.googlecode.com/svn/wiki/ah_find.png]
 
-  * Memory Consumption (the less the better)
+  * Memory Consumption (less is better)
 [http://ulib.googlecode.com/svn/wiki/ah_mem.png]
-
-As shown in the above figures, aligned hashing has outstanding performance, and is cost-effective with respect to memory usage.
