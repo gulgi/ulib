@@ -1,13 +1,11 @@
 == AVL Performance Comparison ==
 
-We compare the performance of several popular AVL tree implementations: GNU libavl, which is said to be the most widely used, OpenSolaris Kernel AVL, and the one in ulib.
+We compare the performance of several popular AVL tree implementations: GNU libavl, OpenSolaris Kernel AVL, and the one in ulib.
 
-First, we fed each AVL tree with 64bit random numbers during which the insertion speed was measured as shown in the following figure.
+First, we fed each AVL tree with 64bit random numbers during which the insert speed was measured, as shown in the following figure.
 
 [http://ulib.googlecode.com/svn/wiki/avl_ins.png]
 
 Next, we performed massive random searches on those AVL trees and the search speed was measured. The following figure depicts the search performance for various tree sizes.
 
 [http://ulib.googlecode.com/svn/wiki/avl_find.png]
-
-  * *_Conclusions_*. All implementations have shown similar speed patterns, in which OpenSolaris's AVL and Ulib AVL have outstanding insertion and search performance. On possible factor that could have declined the GNU libavl's speed is that its node is allocated by the library, thus two allocations are actually needed to insert an element--one for the library to allocate the node and another allocation for the user data.
