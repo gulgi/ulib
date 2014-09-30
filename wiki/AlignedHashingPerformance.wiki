@@ -1,4 +1,4 @@
-The following experiments were based on 64-bit Linux with GCC 4.5.2. For better objectivity, the identity hash function, f(x)=x, was used for all experiments.
+The following experiments were based on a 64-bit Linux with GCC 4.5.2. For better objectivity, the identity hash function, f(x)=x, was used for all experiments.
 
   * Insert Execution Time (less is better)
 [http://ulib.googlecode.com/svn/wiki/ah_ins.png]
