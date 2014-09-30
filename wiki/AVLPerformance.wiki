@@ -1,8 +1,7 @@
 == AVL Performance Comparison ==
+The comparison involves GNU libavl, OpenSolaris Kernel AVL, and ULIB AVL implementation.
 
-We compare the performance of several popular AVL tree implementations: GNU libavl, OpenSolaris Kernel AVL, and the one in ulib.
-
-First, we fed each AVL tree with 64bit random numbers during which the insert speed was measured, as shown in the following figure.
+First, we fed each AVL tree with 64-bit random numbers during which the insert speed was measured, as shown in the following figure.
 
 [http://ulib.googlecode.com/svn/wiki/avl_ins.png]
 
